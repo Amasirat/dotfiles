@@ -1,0 +1,112 @@
+[
+  {
+    "layer": "top",
+    "modules-left": ["clock", "network"],
+    "modules-center": ["cpu", "memory"],
+    "modules-right": ["wireplumber", "bluetooth", "battery"],
+    "battery": {
+      "interval": 60,
+      "format": "{capacity}% {icon}",
+      "format-icons": {
+        "default": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
+      },
+      "states": {
+        "warning": 30,
+        "critical": 15,
+      },
+      "events": {
+        "on-discharging-warning": "notify-send -u critical '󰁺 Low Battery'",
+        "on-discharging-critical": "notify-send -u critical '󰂎 Very Low Battery'",
+        "on-charging-100": "notify-send -u normal '󰁹 Battery Full!'",
+        "on-discharging": "notify-send -u normal '󰂆 Power Switch' Discharging",
+        "on-charging": "notify-send -u normal '󰂊 Power Switch' Charging",
+      },
+    },
+    "cpu": {
+      "interval": 1,
+      "format": "{usage:>2}% ",
+    },
+    "memory": {
+      "interval": 30,
+      "format": "{}% ",
+      "max-length": 10,
+    },
+    "clock": {
+      "format": "{:%H:%M}  ",
+      "format-alt": "{:%A, %B %d, %Y (%R)} 󰃰 ",
+      "tooltip-format": "<tt><small>{calendar}</small></tt>",
+      "calendar": {
+        "mode": "year",
+        "mode-mon-col": 3,
+        "weeks-pos": "right",
+        "first-day-of-week": 1,
+        "on-scroll": 1,
+        "on-click-right": "mode",
+        "format": {
+          "months": "<span color='#ffead3'><b>{}</b></span>",
+          "days": "<span color='#ecc6d9'><b>{}</b></span>",
+          "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+          "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+          "today": "<span color='#ff6699'><b><u>{}</u></b></span>",
+        },
+      },
+      "actions": {
+        "on-click-right": "mode",
+        "on-click-forward": "tz_up",
+        "on-click-backward": "tz_down",
+        "on-scroll-up": "shift_up",
+        "on-scroll-down": "shift_down",
+      },
+    },
+    "wireplumber": {
+      "format": "{volume}% {icon}",
+      "format-icons": ["", " ", " ", " "],
+      "format-muted": "mute  ",
+      "on-click": "pwvucontrol",
+    },
+    "network": {
+      "format-wifi": "{essid} {icon}",
+      "format-icons": ["󰤟 ", "󰤢 ", "󰤥 ", "󰤨 "],
+      "format-ethernet": "{ifname} 󰈀 ",
+      "tooltip-format": "{ifname} via {gwaddr} 󰈀 ",
+      "format-linked": "{ifname} (No IP) 󰈀 ",
+      "format-disconnected": "Disconnected 󰤭 {ifname}",
+    },
+    "bluetooth": {
+      "format-on": "󰂯",
+      "format-off": "󰂲",
+      "format-disabled": "󰂲",
+      "format-connected": "{device_alias} 󰂱 ",
+      "on-click": "blueman",
+    },
+  },
+  {
+    "layer": "top",
+    "position": "bottom",
+    "modules-left": ["power-profiles-daemon", "disk"],
+    "modules-center": ["tray"],
+    "modules-right": ["network"],
+    "disk": {
+      "path": "/",
+      "format": "{used}/{total}  ",
+    },
+
+    "network": {
+      "format-wifi": "{ipaddr} | Down: {bandwidthDownBits} Up: {bandwidthUpBits}",
+      "format-ethernet": "{ipaddr} | Down: {bandwidthDownBits} Up: {bandwidthUpBits}",
+      "format-disconnected": "Disconnected  ",
+    },
+    "power-profiles-daemon": {
+      "format": " {icon}",
+      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+      "tooltip": true,
+      "format-icons": {
+        "default": " Dft",
+        "performance": " Fst",
+        "balanced": " Bal",
+        "power-saver": " Sve",
+      },
+    },
+  },
+]

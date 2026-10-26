@@ -1,0 +1,2 @@
+[launcher]
+command = ['fuzzel', '--dmenu', '--index', '--auto-select']

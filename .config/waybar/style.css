@@ -1,0 +1,94 @@
+* {
+    font-family: "JetbrainsMono Nerd Font", "Font Awesome 6 Free";
+    font-size: 18px;
+    opacity: 0.95;
+}
+
+window#waybar {
+    color: #89dceb;
+    background: transparent;
+}
+
+.modules-right {
+    border-radius: 6px 0px 0px 6px;
+    background-color: #292c3c;
+    padding: 4px;
+}
+
+.modules-center {
+    border-radius: 0px 0px 6px 6px;
+    background-color: #292c3c;
+    padding: 4px;
+}
+.modules-left {
+    border-radius: 0px 0px 6px 0px;
+    background-color: #292c3c;
+    padding: 4px;
+}
+
+#battery {
+    margin-right: 8px;
+}
+
+#battery.charging {
+    color: #a6e3a1;
+}
+
+#battery.warning {
+    color: #fab387;
+}
+
+#battery.critical {
+    color: #f38ba8;
+}
+
+#wireplumber {
+    margin-right: 8px;
+}
+
+#memory {
+    margin-right: 8px;
+}
+
+#cpu {
+    margin-right: 16px;
+}
+
+#network {
+    margin-left: 8px;
+}
+
+#network.disconnected {
+    color: #f38ba8;
+}
+
+#bluetooth {
+    margin-right: 8px;
+}
+
+#bluetooth.off {
+    color: #f38ba8;
+}
+#power-profiles-daemon {
+    padding: 4px;
+    border-radius: 4px;
+}
+
+#power-profiles-daemon.performance {
+    background-color: #181926;
+    color: #ed8796;
+}
+
+#power-profiles-daemon.balanced {
+    background-color: #181926;
+    color: #91d7e3;
+}
+
+#power-profiles-daemon.power-saver {
+    background-color: #181926;
+    color: #8bd5ca;
+}
+
+#disk {
+    margin-left: 8px;
+}
