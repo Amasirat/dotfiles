@@ -1,5 +1,6 @@
 return {
 	"mfussenegger/nvim-dap",
+	priority = 1000,
 	dependencies = {
 		"rcarriga/nvim-dap-ui",
 		"nvim-neotest/nvim-nio",
@@ -48,31 +49,29 @@ return {
 			},
 		}
 		-- C/C++
-		dap.configurations = {
-			c = {
-				{
-					name = "Launch file",
-					type = "cppdbg",
-					request = "launch",
-					program = function()
-						return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-					end,
-					cwd = "${workspaceFolder}",
-					stopAtEntry = false,
-					MIMode = "lldb",
-				},
-				{
-					name = "Attach to lldbserver :1234",
-					type = "cppdbg",
-					request = "launch",
-					MIMode = "lldb",
-					miDebuggerServerAddress = "localhost:1234",
-					miDebuggerPath = "/usr/bin/lldb",
-					cwd = "${workspaceFolder}",
-					program = function()
-						return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-					end,
-				},
+		dap.configurations.c = {
+			{
+				name = "Launch file",
+				type = "cppdbg",
+				request = "launch",
+				program = function()
+					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+				end,
+				cwd = "${workspaceFolder}",
+				stopAtEntry = false,
+				MIMode = "lldb",
+			},
+			{
+				name = "Attach to lldbserver :1234",
+				type = "cppdbg",
+				request = "launch",
+				MIMode = "lldb",
+				miDebuggerServerAddress = "localhost:1234",
+				miDebuggerPath = "/usr/bin/lldb",
+				cwd = "${workspaceFolder}",
+				program = function()
+					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+				end,
 			},
 		}
 
