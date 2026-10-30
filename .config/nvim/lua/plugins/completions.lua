@@ -5,7 +5,7 @@ return {
 			"saghen/blink.lib",
 			-- optional: provides snippets for the snippet source
 			"rafamadriz/friendly-snippets",
-      "L3MON4D3/LuaSnip"
+			"L3MON4D3/LuaSnip",
 		},
 		build = function()
 			-- build the fuzzy matcher, optionally add a timeout to `pwait(timeout_ms)`
@@ -13,8 +13,6 @@ return {
 			require("blink.cmp").build():pwait()
 		end,
 
-		---@module 'blink.cmp'
-		---@type blink.cmp.Config
 		opts = {
 			-- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
 			-- 'super-tab' for mappings similar to vscode (tab to accept)
@@ -29,17 +27,10 @@ return {
 			--
 			-- See :h blink-cmp-config-keymap for defining your own keymap
 			keymap = { preset = "super-tab" },
-			-- (Default) Only show the documentation popup when manually triggered
 			completion = { documentation = { auto_show = false } },
 			snippets = { preset = "luasnip" },
-			-- (Default) list of enabled providers defined so that you can extend it
-			-- elsewhere in your config, without redefining it, due to `opts_extend`
 			sources = { default = { "lsp", "path", "snippets", "buffer" } },
-
-			-- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
-			-- You may use a lua implementation instead by using `implementation = "lua"`
-			-- See the fuzzy documentation for more information
-			fuzzy = { implementation = "rust" },
+			fuzzy = { implementation = "lua" },
 		},
 	},
 }
