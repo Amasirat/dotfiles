@@ -7,5 +7,8 @@ vim.cmd("set shiftwidth=4")
 vim.diagnostic.config({ virtual_text = true })
 vim.cmd("set clipboard=unnamedplus")
 
+vim.opt.formatoptions:remove {'r', 'o'}
+
 vim.g.netrw_banner = 0
 vim.g.netrw_clipboard = 0
+
